@@ -1,0 +1,54 @@
+.target-cursor-wrapper {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 3px 5px rgba(37, 37, 34, .12));
+  transition: opacity .16s ease;
+  will-change: transform;
+}
+
+.target-cursor-wrapper.is-visible { opacity: 1; }
+.target-cursor-wrapper.is-targeting { filter: drop-shadow(0 4px 7px rgba(37, 37, 34, .16)); }
+
+.target-cursor-dot,
+.target-cursor-corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  will-change: transform, border-color, background-color;
+}
+
+.target-cursor-dot {
+  width: 4px;
+  height: 4px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #252522;
+}
+
+.target-cursor-corner {
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid #252522;
+}
+
+.target-cursor-corner--tl { border-right: 0; border-bottom: 0; }
+.target-cursor-corner--tr { border-left: 0; border-bottom: 0; }
+.target-cursor-corner--br { border-left: 0; border-top: 0; }
+.target-cursor-corner--bl { border-right: 0; border-top: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  html.target-cursor-enabled,
+  html.target-cursor-enabled body,
+  html.target-cursor-enabled a,
+  html.target-cursor-enabled button { cursor: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .target-cursor-wrapper { transition-duration: .01ms; }
+}
