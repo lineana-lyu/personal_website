@@ -29,6 +29,8 @@ import {
   projects,
 } from './data/portfolio'
 
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
 function SectionHeading({ number, eyebrow, title, lead }: { number: string; eyebrow: string; title: string; lead?: string }) {
   return (
     <Reveal className="section-heading">
@@ -94,7 +96,7 @@ function Header() {
             </a>
           ))}
         </nav>
-        <a className="header-resume roll-link" href="/documents/resume.pdf" download aria-label="下载简历">
+        <a className="header-resume roll-link" href={publicAsset('documents/resume.pdf')} download aria-label="下载简历">
           <span className="nav-roll" aria-hidden="true">
             <span className="nav-roll__base">Resume</span>
             <span className="nav-roll__accent">Resume</span>
@@ -133,8 +135,8 @@ function Hero() {
     <section className="hero" id="top" aria-labelledby="hero-title">
       <div className="hero-media" aria-hidden="true">
         {playVideo && (
-          <video autoPlay muted loop playsInline preload="metadata" poster="/media/hero-abstract-relief-v1.png">
-            <source src="/media/hero2.mp4" type="video/mp4" />
+          <video autoPlay muted loop playsInline preload="metadata" poster={publicAsset('media/hero-abstract-relief-v1.png')}>
+            <source src={publicAsset('media/hero2.mp4')} type="video/mp4" />
           </video>
         )}
       </div>
@@ -353,7 +355,7 @@ function Contact() {
           <a className="contact-link" href={contact.github} target="_blank" rel="noreferrer">
             <span><GitFork aria-hidden="true" />GitHub</span><strong>@{contact.githubHandle}</strong><ExternalLink aria-hidden="true" />
           </a>
-          <a className="contact-link" href="/documents/resume.pdf" download>
+          <a className="contact-link" href={publicAsset('documents/resume.pdf')} download>
             <span><Download aria-hidden="true" />Resume</span><strong>下载 PDF 简历</strong><ArrowDownRight aria-hidden="true" />
           </a>
           <div className="contact-link contact-link--muted">
