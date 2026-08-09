@@ -41,7 +41,7 @@ export const aboutPoints = [
 export const experience = {
   company: '成都世纪超星信息有限公司',
   role: '课程经理',
-  period: '2026.05.20 — 至今',
+  period: '2026.05-2026.08',
   eyebrow: 'EDUCATION × AI',
   summary:
     '参与高校课程数字化与 AI 教学产品方案，将教师需求转译为产品功能、交付路径与可验证原型。',
