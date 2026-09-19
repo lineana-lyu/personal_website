@@ -174,7 +174,7 @@ function Hero() {
         </span>
         <ArrowDown aria-hidden="true" />
       </a>
-      <div className="hero-index" aria-hidden="true"><span>PORTFOLIO</span><b>2026</b></div>
+      <div className="hero-index" aria-hidden="true"><span>PORTFOLIO</span><b>2027</b></div>
     </section>
   )
 }
