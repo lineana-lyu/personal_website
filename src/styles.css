@@ -178,6 +178,8 @@ img, video { display: block; max-width: 100%; }
 .case-headline { max-width: 620px; margin: 0; font-size: 17px; line-height: 1.75; font-weight: 650; }
 .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
 .tag-row span { padding: 7px 10px; border: 1px solid color-mix(in srgb, var(--accent) 70%, var(--ink)); background: color-mix(in srgb, var(--accent) 9%, transparent); font-size: 10px; font-weight: 700; }
+.case-links { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
+.case-links .text-link { margin-top: 24px; }
 .text-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding-bottom: 4px; border-bottom: 1px solid var(--ink); font-size: 12px; font-weight: 750; }
 .text-link svg { width: 14px; transition: transform .3s cubic-bezier(.49, 0, .01, 1); }
 .text-link:hover svg { transform: translate(8px, -2px); }
