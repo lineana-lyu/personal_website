@@ -18,10 +18,19 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           <div className="tag-row">
             {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
           </div>
-          {project.github && (
-            <a className="text-link" href={project.github} target="_blank" rel="noreferrer">
-              查看 GitHub 项目 <ExternalLink aria-hidden="true" />
-            </a>
+          {(project.github || project.release) && (
+            <div className="case-links">
+              {project.github && (
+                <a className="text-link" href={project.github} target="_blank" rel="noreferrer">
+                  查看 GitHub 项目 <ExternalLink aria-hidden="true" />
+                </a>
+              )}
+              {project.release && (
+                <a className="text-link" href={project.release} target="_blank" rel="noreferrer">
+                  查看 v0.8.6 Release <ExternalLink aria-hidden="true" />
+                </a>
+              )}
+            </div>
           )}
         </div>
         <dl className="case-facts">
