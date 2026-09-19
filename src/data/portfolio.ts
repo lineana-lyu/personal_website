@@ -14,6 +14,8 @@ export type Project = {
   flow: string[]
   github?: string
   release?: string
+  docs?: { label: string; href: string }[]
+  evidence?: { label: string; value: string; note?: string }[]
 }
 
 export const navItems = [
@@ -62,26 +64,37 @@ export const projects: Project[] = [
     status: '2026.09—至今 · 已发布 v0.8.6',
     accent: 'cyan',
     tags: ['Windows 桌面端', '本地优先', 'AI 容错'],
-    headline: '把“查到一个词”继续推进到“能主动说出来、写出来”，并让中断后的学习计划仍然可继续。',
+    headline: '不是把单词“认出来”就结束，而是让真实遇到的词进入可回忆、可联想、可表达、可长期保持的主动词汇闭环。',
     facts: [
-      { label: '目标场景', value: '词义确认 → 主动表达 → 持续复习' },
+      { label: '目标结果', value: 'Encounter → Apply → Review → Stable' },
       { label: '我的角色', value: '项目负责人 · 产品设计 + 开发' },
-      { label: '技术方向', value: 'Windows 桌面应用 · 本地优先架构' },
+      { label: '产品原则', value: '本地优先 · AI 辅助而非学习权威' },
       { label: '交付状态', value: 'v0.8.6 · 安装版 + 便携版' },
     ],
     details: [
-      { label: '项目背景', value: '针对英语学习者在口语、写作中词汇提取困难的问题，解决查词后难以转化为主动表达、复习计划易中断累积等痛点。' },
-      { label: '学习流程重构', value: '将分散的学习与复习入口合并为统一的每日任务流，按到期复习、在学词、新词的优先级排序执行。' },
-      { label: '中断恢复', value: '用户中断学习后，系统根据当前进度重排当日计划，避免未完成任务持续堆积导致放弃。' },
-      { label: 'AI 交互容错', value: 'AI 仅用于场景具体化和表达修正，不自动覆盖用户输入；调用失败时保留手动编辑、图片上传和跳过选项。' },
-      { label: '本地查词策略', value: '基础查词优先使用本地能力，仅在复杂表达解释时调用在线服务，降低网络依赖带来的等待与失败风险。' },
-      { label: '问题校验', value: '针对中文反查误选、短语发音截断等问题，以 suit、hair grip 等典型样例建立校验规则并调整匹配逻辑。' },
-      { label: '版本交付', value: '把功能改动拆成用户操作路径、页面状态、异常提示与验收条件，借助 Codex 开发后逐项核对。' },
-      { label: '项目结果', value: '已从浏览器原型迁移为可安装 Windows 桌面应用，公开发布 v0.8.6，并提供安装版与便携版。' },
+      { label: '产品目标', value: '把用户真实遇到并想学的单词或短语，从词义理解推进到主动回忆、个人记忆联想、原创表达和长期保持，而不是停留在“认识这个词”。' },
+      { label: '学习阶段模型', value: '产品阶段固定为 Select → Memorize → Visualize → Apply → Review；Stable 是长期记忆状态，不是额外学习阶段。正常学习不允许同一天连续跨越多个阶段。' },
+      { label: 'Today 与 No Vocabulary Debt', value: '“今天”是有限且冻结的 StudyDay 计划，优先级为 Review → Memorize → Visualize → Apply → Select；漏学不会把每日新词目标滚成强制欠债，复习压力高时优先减少新词。' },
+      { label: 'Visualize 决策', value: '必须由用户先形成自己的联想、场景或记忆，再由 AI 在显式操作后帮助具体化；AI 不自动生成用户的第一联想。' },
+      { label: 'Apply 决策', value: '用户必须先表达真正想说的内容，AI 只负责检查、翻译、修正与自然度建议，不能静默替换用户句子，也不能替用户完成学习。' },
+      { label: '复习策略', value: '复习间隔由确定性 Learning Core 管理：1 → 3 → 7 → 16 → 21，进入 Stable 后按 30 → 45 → 68 → 90 维护；AI 不参与决定复习日期、阶段迁移或 Today 成员。' },
+      { label: '本地优先与降级', value: 'LexiFlow Core、ECDICT 与短语词典随应用打包；AI 不可用时仍可查词、手动编辑、上传图片或跳过联想图，单一在线能力失败不阻塞主流程。' },
+      { label: '版本交付与质量', value: '公开发布 Windows v0.8.6 安装版与便携版；仓库包含 33 个 check 脚本，并通过 GitHub Actions 执行学习引擎检查与 Windows 构建。' },
     ],
-    flow: ['查词 / 选义', '进入每日任务', '记忆与联想', '自主造句', 'AI 辅助修正', '到期复习', '中断后重排'],
+    flow: ['Encounter / 查词', 'Understand / 选义', 'Select', 'Memorize', 'Visualize', 'Apply', 'Review', 'Stable'],
     github: 'https://github.com/lineana-lyu/lexiflow',
     release: 'https://github.com/lineana-lyu/lexiflow/releases/tag/v0.8.6',
+    docs: [
+      { label: '产品学习契约', href: 'https://github.com/lineana-lyu/lexiflow/blob/main/docs/PRODUCT_LEARNING_CONTRACT_V3.md' },
+      { label: '运行时职责边界', href: 'https://github.com/lineana-lyu/lexiflow/blob/main/docs/RUNTIME_AUTHORITY_V3.md' },
+      { label: '自动化检查', href: 'https://github.com/lineana-lyu/lexiflow/actions/workflows/learning-check.yml' },
+    ],
+    evidence: [
+      { label: '公开交付', value: 'Windows v0.8.6', note: '安装版 + 便携版' },
+      { label: '学习规则', value: '5 个持久化阶段', note: 'Select → Review' },
+      { label: '质量保障', value: '33 个 check 脚本', note: '学习引擎 / UI / 构建' },
+      { label: 'AI 边界', value: 'Coach, not authority', note: '不决定阶段、复习与 Today' },
+    ],
   },
   {
     id: 'robot-service',
