@@ -1878,3 +1878,76 @@ a.contact-link:hover > svg { transform: translate(9px, -2px); }
     bottom: 8px;
   }
 }
+
+
+.runtime-state-toggle {
+  min-height: 44px;
+  margin: -1px 0 10px;
+  padding: 6px 8px 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid rgba(37,37,34,.09);
+  border-radius: 12px;
+  background: rgba(255,255,255,.30);
+}
+.runtime-state-toggle > span {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: .06em;
+}
+.runtime-state-toggle > div {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 10px;
+  background: rgba(37,37,34,.055);
+}
+.runtime-state-toggle button {
+  min-width: 86px;
+  padding: 7px 11px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 9px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.runtime-state-toggle button.is-active {
+  background: #f8f7f3;
+  color: var(--ink);
+  box-shadow: 0 2px 9px rgba(37,37,34,.07);
+}
+.runtime-stage-view__fixture {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 6px 8px;
+  border: 1px solid rgba(37,37,34,.10);
+  border-radius: 999px;
+  background: rgba(249,248,244,.90);
+  color: #716b64;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+@media (max-width: 560px) {
+  .runtime-state-toggle {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+    padding: 9px;
+  }
+  .runtime-state-toggle > div {
+    width: 100%;
+  }
+  .runtime-state-toggle button {
+    flex: 1;
+  }
+}
