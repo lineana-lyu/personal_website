@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">扫地机用户服务助手案例视觉</title>
+  <desc id="desc">以知识问答、RAG、Agent 和使用报告为核心的扫地机服务助手示意。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8f7f3"/><stop offset="1" stop-color="#f1efea"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#22211f" flood-opacity=".12"/></filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="46"/></filter>
+    <linearGradient id="answer" x1="0" x2="1"><stop stop-color="#e9f6f4"/><stop offset="1" stop-color="#f2eef8"/></linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1345" cy="120" r="230" fill="#dff4f6" opacity=".55" filter="url(#soft)"/>
+  <circle cx="240" cy="760" r="210" fill="#f8ded8" opacity=".4" filter="url(#soft)"/>
+
+  <g font-family="Inter,Segoe UI,PingFang SC,Microsoft YaHei,sans-serif">
+    <text x="76" y="88" font-size="18" font-weight="800" letter-spacing="5" fill="#e66c65">ROBOT VACUUM / SERVICE VIEW</text>
+    <text x="76" y="126" font-size="14" fill="#6d6860">RAG · AGENT · KNOWLEDGE QA · REPORT</text>
+
+    <g filter="url(#shadow)">
+      <rect x="716" y="98" width="670" height="248" rx="28" fill="#fffaf1"/>
+      <circle cx="762" cy="150" r="24" fill="#dff4f6"/>
+      <circle cx="762" cy="145" r="8" fill="#2f9fb6"/>
+      <path d="M748 164c5-10 23-10 28 0" fill="none" stroke="#2f9fb6" stroke-width="4" stroke-linecap="round"/>
+      <text x="806" y="156" font-size="24" font-weight="800" fill="#22211f">滤网怎么清洁？</text>
+      <rect x="760" y="194" width="574" height="110" rx="18" fill="url(#answer)"/>
+      <circle cx="798" cy="230" r="20" fill="#22211f"/>
+      <circle cx="790" cy="229" r="3" fill="#7ed3d9"/><circle cx="806" cy="229" r="3" fill="#7ed3d9"/>
+      <text x="836" y="225" font-size="14" font-weight="800" fill="#22211f">根据产品资料</text>
+      <text x="836" y="250" font-size="13" fill="#6d6860">建议每 2–4 周清洁一次滤网，并完全晾干后再安装。</text>
+      <rect x="836" y="266" width="214" height="24" rx="12" fill="#fffaf1"/>
+      <text x="852" y="283" font-size="11" fill="#6d6860">来源：产品使用指南</text>
+    </g>
+
+    <g transform="translate(1010 378)" filter="url(#shadow)">
+      <ellipse cx="250" cy="220" rx="286" ry="116" fill="#d0cdc6" opacity=".7"/>
+      <ellipse cx="250" cy="200" rx="280" ry="106" fill="#f8f7f3" stroke="#aaa69e" stroke-width="4"/>
+      <ellipse cx="250" cy="190" rx="265" ry="90" fill="#fffaf1" stroke="#d6d1c9" stroke-width="3"/>
+      <rect x="82" y="181" width="118" height="44" rx="16" fill="#343330"/>
+      <circle cx="110" cy="203" r="9" fill="#131313"/>
+      <circle cx="146" cy="203" r="9" fill="#131313"/>
+      <circle cx="250" cy="138" r="54" fill="#f2f0eb" stroke="#c7c3bc" stroke-width="3"/>
+      <circle cx="250" cy="138" r="31" fill="#d5d2cc"/>
+      <path d="M520 234l70 34M-18 234l-60 38" stroke="#aaa69e" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(78 210)">
+      <rect width="464" height="118" rx="22" fill="#fffaf1" stroke="#22211f" stroke-opacity=".08"/>
+      <circle cx="58" cy="59" r="30" fill="#dff4f6"/>
+      <path d="M43 52h30v20H52l-9 8z" fill="none" stroke="#2f9fb6" stroke-width="4" stroke-linejoin="round"/>
+      <text x="110" y="50" font-size="15" font-weight="800" fill="#22211f">统一入口</text>
+      <text x="110" y="78" font-size="13" fill="#6d6860">知识问答 + 个性化使用报告</text>
+    </g>
+
+    <g transform="translate(78 368)">
+      <rect width="464" height="118" rx="22" fill="#fffaf1" stroke="#22211f" stroke-opacity=".08"/>
+      <circle cx="58" cy="59" r="30" fill="#fde7e2"/>
+      <path d="M45 47c0-11 26-11 26 0s-26 11-26 0zm0 0v24c0 11 26 11 26 0V47" fill="none" stroke="#e66c65" stroke-width="4"/>
+      <text x="110" y="50" font-size="15" font-weight="800" fill="#22211f">RAG + Agent</text>
+      <text x="110" y="78" font-size="13" fill="#6d6860">有依据地回答，按任务调用能力</text>
+    </g>
+
+    <g transform="translate(78 526)">
+      <rect width="464" height="118" rx="22" fill="#fffaf1" stroke="#22211f" stroke-opacity=".08"/>
+      <circle cx="58" cy="59" r="30" fill="#eee8f6"/>
+      <path d="M58 37l19 8v14c0 14-9 23-19 29-10-6-19-15-19-29V45z" fill="none" stroke="#9b7eb5" stroke-width="4"/>
+      <path d="M50 59l6 6 12-14" fill="none" stroke="#9b7eb5" stroke-width="4" stroke-linecap="round"/>
+      <text x="110" y="50" font-size="15" font-weight="800" fill="#22211f">可验证 Demo</text>
+      <text x="110" y="78" font-size="13" fill="#6d6860">主路径跑通，并用运行日志核对调用链路</text>
+    </g>
+
+    <g transform="translate(80 700)">
+      <g><circle cx="52" cy="52" r="40" fill="#dff4f6"/><path d="M38 44h28v18H49l-11 9z" fill="none" stroke="#2f9fb6" stroke-width="4"/><text x="18" y="112" font-size="12" font-weight="800" fill="#22211f">用户提问</text></g>
+      <g transform="translate(250)"><circle cx="52" cy="52" r="40" fill="#fde7e2"/><path d="M42 52c0-16 20-22 30-9 7 9 1 26-13 26H47" fill="none" stroke="#e66c65" stroke-width="4"/><text x="4" y="112" font-size="12" font-weight="800" fill="#22211f">Agent识别任务</text></g>
+      <g transform="translate(500)"><circle cx="52" cy="52" r="40" fill="#eee8f6"/><rect x="39" y="36" width="26" height="32" rx="4" fill="none" stroke="#9b7eb5" stroke-width="4"/><circle cx="63" cy="65" r="9" fill="#f8f7f3" stroke="#9b7eb5" stroke-width="4"/><path d="M69 71l8 8" stroke="#9b7eb5" stroke-width="4"/><text x="10" y="112" font-size="12" font-weight="800" fill="#22211f">RAG检索资料</text></g>
+      <g transform="translate(750)"><circle cx="52" cy="52" r="40" fill="#e6f5f2"/><rect x="38" y="36" width="28" height="34" rx="4" fill="none" stroke="#2f9fb6" stroke-width="4"/><path d="M44 45h16M44 53h16M44 61h12" stroke="#2f9fb6" stroke-width="3"/><text x="-2" y="112" font-size="12" font-weight="800" fill="#22211f">回答 / 使用报告</text></g>
+      <g transform="translate(1000)"><circle cx="52" cy="52" r="40" fill="#e7eef8"/><path d="M39 64V50M52 64V42M65 64V34" stroke="#527dbb" stroke-width="5" stroke-linecap="round"/><text x="0" y="112" font-size="12" font-weight="800" fill="#22211f">运行日志核对</text></g>
+      <g stroke="#b8b4ad" stroke-width="2" stroke-dasharray="5 8"><path d="M104 52h198M354 52h198M604 52h198M854 52h198"/></g>
+    </g>
+  </g>
+</svg>
