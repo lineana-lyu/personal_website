@@ -247,6 +247,23 @@ function Experience() {
 function Projects() {
   const [activeProjectId, setActiveProjectId] = useState(projects[0].id)
   const activeProject = projects.find((project) => project.id === activeProjectId) ?? projects[0]
+  const activeProjectIndex = projects.findIndex((project) => project.id === activeProject.id)
+
+  const switchProject = (projectId: string) => {
+    setActiveProjectId(projectId)
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const target = document.getElementById(projectId)
+        if (!target) return
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        const offset = window.innerWidth <= 768 ? 132 : 148
+        const top = target.getBoundingClientRect().top + window.scrollY - offset
+        window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' })
+      })
+    })
+  }
 
   return (
     <section className="section projects" id="projects">
@@ -259,33 +276,29 @@ function Projects() {
           className="section-heading--projects"
         />
 
-        <Reveal className="project-picker">
-          {projects.map((project) => {
-            const isActive = project.id === activeProjectId
-            return (
-              <button
-                className={`project-picker__item accent-${project.accent} ${isActive ? 'is-active' : ''}`}
-                type="button"
-                key={project.id}
-                onClick={() => setActiveProjectId(project.id)}
-                aria-pressed={isActive}
-              >
-                <span className="project-picker__number">{project.number}</span>
-                <div className="project-picker__copy">
-                  <div className="project-picker__topline">
-                    <strong>{project.title}</strong>
-                    <span>{project.status.split('·').at(-1)?.trim()}</span>
-                  </div>
-                  <p>{project.headline}</p>
-                  <div className="project-picker__tags">
-                    {project.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}
-                  </div>
-                </div>
-                <ArrowRight className="project-picker__arrow" aria-hidden="true" />
-              </button>
-            )
-          })}
-        </Reveal>
+        <nav className="project-switcher" aria-label="项目案例切换">
+          <span className="project-switcher__label">PROJECTS</span>
+          <div className="project-switcher__tabs">
+            {projects.map((project) => {
+              const isActive = project.id === activeProjectId
+              return (
+                <button
+                  className={`project-switcher__tab accent-${project.accent} ${isActive ? 'is-active' : ''}`}
+                  type="button"
+                  key={project.id}
+                  onClick={() => switchProject(project.id)}
+                  aria-pressed={isActive}
+                >
+                  <span>{project.number}</span>
+                  <strong>{project.title}</strong>
+                </button>
+              )
+            })}
+          </div>
+          <span className="project-switcher__counter">
+            {String(activeProjectIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+          </span>
+        </nav>
 
         <div className="project-list project-list--single" key={activeProject.id}>
           <ProjectCaseStudy project={activeProject} />
