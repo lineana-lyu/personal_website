@@ -29,17 +29,17 @@ function FlowRail({ items, compact = false }: { items: string[]; compact?: boole
 
 function LexiFlowVisual({ project }: { project: Project }) {
   const releaseChecks = [
-    ['主流程', '查词 → 学习 → 造句 → 复习', '通过'],
-    ['中断恢复', '按当前进度重排当日计划', '通过'],
-    ['AI 异常', '保留手动编辑 / 图片 / 跳过', '通过'],
-    ['发布交付', '安装版 + 便携版', 'v0.8.6'],
+    ['阶段模型', 'Select → Memorize → Visualize → Apply → Review', '通过'],
+    ['Today 计划', '冻结成员 + No Vocabulary Debt', '通过'],
+    ['AI 边界', '不决定阶段 / 复习 / Today', '通过'],
+    ['公开交付', 'Windows 安装版 + 便携版', 'v0.8.6'],
   ]
 
   const architecture = [
-    [Search, '本地查词', '基础查询优先离线完成'],
-    [FileText, '今日任务', '统一承接学习与复习'],
-    [Sparkles, 'AI 辅助', '联想与表达修正'],
-    [Check, '主动输出', '自主造句并进入复习'],
+    [Search, '本地词典', 'LexiFlow Core / ECDICT / 短语词典'],
+    [FileText, 'Learning Core', '确定性阶段、Today 与复习规则'],
+    [Sparkles, 'AI Coach', '联想具体化、表达检查与修正'],
+    [Check, 'Active Vocabulary', '原创表达 → Review → Stable'],
   ] as const
 
   return (
@@ -47,12 +47,12 @@ function LexiFlowVisual({ project }: { project: Project }) {
       <VisualHeader title="从查到一个词，到真正能主动用出来" note="Windows 桌面应用 · v0.8.6" />
 
       <section className="visual-block visual-block--wide">
-        <div className="visual-block-title"><span>学习主链路</span><small>把查词、表达与复习放进同一个闭环</small></div>
+        <div className="visual-block-title"><span>产品学习旅程</span><small>从真实遇词，到可主动使用并长期保持</small></div>
         <FlowRail items={project.flow} compact />
       </section>
 
       <section className="visual-block visual-block--wide">
-        <div className="visual-block-title"><span>核心产品架构</span><small>本地优先，AI 只出现在有增益的位置</small></div>
+        <div className="visual-block-title"><span>能力分工</span><small>规则由确定性引擎负责，AI 只做学习辅助</small></div>
         <div className="architecture-rail">
           {architecture.map(([Icon, title, note], index) => (
             <div className="architecture-node" key={title}>
@@ -67,23 +67,23 @@ function LexiFlowVisual({ project }: { project: Project }) {
 
       <div className="visual-split">
         <section className="visual-block feature-map">
-          <div className="visual-block-title"><span>每日任务重构</span><small>解决“学到一半就断掉”</small></div>
+          <div className="visual-block-title"><span>Today / StudyDay 设计</span><small>保护复习，不制造“词汇债务”</small></div>
           {[
-            ['优先级', '到期复习 → 在学词 → 新词'],
-            ['单入口', '“今天”承接当日全部学习任务'],
-            ['中断后', '根据当前进度重新排序剩余任务'],
-            ['目标', '减少任务堆积带来的放弃感'],
+            ['优先级', 'Review → Memorize → Visualize → Apply → Select'],
+            ['冻结计划', '同一 StudyDay 的 DailyPlan 创建后保持有限且幂等'],
+            ['漏学处理', '不把错过的新词额度滚成强制积压'],
+            ['高压复习', '先减少或暂停新词，而不是丢掉到期复习'],
           ].map(([title, items]) => <div key={title}><b>{title}</b><span>{items}</span></div>)}
         </section>
 
         <section className="visual-block">
-          <div className="visual-block-title"><span>AI 容错设计</span><small>单个模块失败，不阻塞整体学习</small></div>
+          <div className="visual-block-title"><span>AI 产品边界</span><small>AI 是 Coach，不是学习权威</small></div>
           <div className="guard-list">
             {[
-              'AI 不自动覆盖用户原始输入',
-              '调用失败 → 保留手动编辑',
-              '联想图失败 → 可上传图片或跳过',
-              '基础查词优先本地完成',
+              'Visualize：用户先形成联想，AI 再帮助具体化',
+              'Apply：用户先表达，AI 不能静默替写',
+              'AI 不决定阶段迁移、Today 成员与复习间隔',
+              'AI 不可用时仍保留查词、编辑、上传与跳过',
             ].map((item) => (
               <span key={item}><ShieldCheck aria-hidden="true" />{item}</span>
             ))}
@@ -91,16 +91,16 @@ function LexiFlowVisual({ project }: { project: Project }) {
           <div className="data-summary">
             <Database aria-hidden="true" />
             <div>
-              <strong>本地优先架构</strong>
-              <small>基础查词与学习数据不依赖在线服务；复杂表达再调用在线能力</small>
+              <strong>确定性学习核心 + 本地优先</strong>
+              <small>阶段、StudyDay 与 Review 由规则引擎管理；基础查词和学习数据不依赖在线模型</small>
             </div>
-            <span>可降级</span>
+            <span>AI 可降级</span>
           </div>
         </section>
       </div>
 
       <section className="visual-block visual-block--wide">
-        <div className="visual-block-title"><span>版本交付与验收</span><small>把功能改动写成可验证条件</small></div>
+        <div className="visual-block-title"><span>产品约束与自动化验收</span><small>33 个 check 脚本 + GitHub Actions</small></div>
         <div className="test-table" role="table" aria-label="LexiFlow 版本验收节选">
           {releaseChecks.map((row) => row.map((cell, index) => (
             <span role="cell" className={index === 2 ? 'test-result' : ''} key={`${row[0]}-${cell}`}>
