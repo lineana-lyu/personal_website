@@ -1,4 +1,4 @@
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, FileCheck2 } from 'lucide-react'
 import type { Project } from '../data/portfolio'
 import { Reveal } from './Reveal'
 import { ProjectVisual } from './ProjectVisuals'
@@ -42,6 +42,40 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           ))}
         </dl>
       </Reveal>
+      {project.evidence && project.evidence.length > 0 && (
+        <Reveal className="case-proof" delay={60}>
+          <div className="case-proof__brand">
+            {project.id === 'lexiflow' && (
+              <img src={`${import.meta.env.BASE_URL}media/lexiflow-icon.png`} alt="LexiFlow 应用图标" />
+            )}
+            <div>
+              <span>REAL PRODUCT EVIDENCE</span>
+              <h4>不是概念稿，关键产品规则与公开交付都有仓库证据</h4>
+              <p>案例内容以项目主仓库、产品学习契约、运行时职责文档和公开 Release 为依据。</p>
+            </div>
+          </div>
+          <div className="case-proof__metrics">
+            {project.evidence.map((item) => (
+              <div key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+                {item.note && <small>{item.note}</small>}
+              </div>
+            ))}
+          </div>
+          {project.docs && project.docs.length > 0 && (
+            <div className="case-proof__links">
+              {project.docs.map((doc) => (
+                <a href={doc.href} target="_blank" rel="noreferrer" key={doc.href}>
+                  <FileCheck2 aria-hidden="true" />
+                  <span>{doc.label}</span>
+                  <ExternalLink aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+          )}
+        </Reveal>
+      )}
       <Reveal className="case-visual-wrap" delay={80}>
         <ProjectVisual project={project} />
       </Reveal>
