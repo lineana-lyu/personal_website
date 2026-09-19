@@ -4,7 +4,20 @@ import type { Project } from '../data/portfolio'
 import { Reveal } from './Reveal'
 import { ProjectVisual } from './ProjectVisuals'
 
-const lexiflowRuntimeStages = [
+type LexiFlowRuntimeStage = {
+  id: 'select' | 'memorize' | 'visualize' | 'apply' | 'review'
+  number: string
+  label: string
+  english: string
+  image: string
+  alt: string
+  note: string
+  resultImage?: string
+  resultAlt?: string
+  resultNote?: string
+}
+
+const lexiflowRuntimeStages: LexiFlowRuntimeStage[] = [
   {
     id: 'select',
     number: '01',
@@ -29,8 +42,11 @@ const lexiflowRuntimeStages = [
     label: '视觉联想',
     english: 'VISUALIZE',
     image: 'media/lexiflow-real-visualize-grow.png',
-    alt: 'LexiFlow 实机运行的 Visualize 视觉联想页面',
-    note: '用户先写自己的联想场景，AI 只能在之后帮忙具体化。',
+    alt: 'LexiFlow 实机运行的 Visualize 用户先写联想页面',
+    note: '第一步始终由用户自己形成联想场景，AI 不能替用户完成第一次联想。',
+    resultImage: 'media/lexiflow-real-visualize-assisted.png',
+    resultAlt: 'LexiFlow Visualize 实机界面中显示 AI 建议仅供参考的结果状态',
+    resultNote: 'AI 建议作为独立参考层出现，原始联想仍保留；用户可以采用、重试，也可以完全忽略。',
   },
   {
     id: 'apply',
@@ -38,8 +54,11 @@ const lexiflowRuntimeStages = [
     label: '造句应用',
     english: 'APPLY',
     image: 'media/lexiflow-real-apply-grow.png',
-    alt: 'LexiFlow 实机运行的 Apply 主动表达页面',
-    note: '用户先表达真正想说的话，再让 AI 检查，不由 AI 代写第一句。',
+    alt: 'LexiFlow 实机运行的 Apply 用户先输入表达页面',
+    note: '先写真正想表达的话，再请求检查；AI 不先替用户生成第一句。',
+    resultImage: 'media/lexiflow-real-apply-checked.png',
+    resultAlt: 'LexiFlow Apply 实机界面中表达检查通过并给出可选建议的结果状态',
+    resultNote: '检查通过后，可选建议不会阻止继续学习；用户可以保留原句，而不是被 AI 自动改写。',
   },
   {
     id: 'review',
@@ -50,12 +69,23 @@ const lexiflowRuntimeStages = [
     alt: 'LexiFlow 实机运行的 Review 主动回忆页面',
     note: '系统按 Today Plan 安排到期复习，以主动回忆结果推进长期巩固。',
   },
-] as const
+]
 
 function LexiFlowRuntimeGallery() {
-  const [activeStageId, setActiveStageId] = useState<(typeof lexiflowRuntimeStages)[number]['id']>('visualize')
+  const [activeStageId, setActiveStageId] = useState<LexiFlowRuntimeStage['id']>('visualize')
+  const [viewMode, setViewMode] = useState<'input' | 'result'>('result')
   const activeStage = lexiflowRuntimeStages.find((stage) => stage.id === activeStageId) ?? lexiflowRuntimeStages[0]
-  const imageUrl = `${import.meta.env.BASE_URL}${activeStage.image}`
+  const hasResult = Boolean(activeStage.resultImage)
+  const showingResult = hasResult && viewMode === 'result'
+  const activeImage = showingResult ? activeStage.resultImage! : activeStage.image
+  const activeAlt = showingResult ? activeStage.resultAlt! : activeStage.alt
+  const activeNote = showingResult ? activeStage.resultNote! : activeStage.note
+  const imageUrl = `${import.meta.env.BASE_URL}${activeImage}`
+
+  const switchStage = (stage: LexiFlowRuntimeStage) => {
+    setActiveStageId(stage.id)
+    setViewMode(stage.resultImage ? 'result' : 'input')
+  }
 
   return (
     <Reveal className="case-real-ui" delay={80}>
@@ -63,7 +93,7 @@ function LexiFlowRuntimeGallery() {
         <div>
           <span>REAL PRODUCT UI</span>
           <h4>核心学习闭环 · 实机运行</h4>
-          <p>不是把页面截图全部铺开，而是只展示能证明核心产品机制的 5 个阶段。界面来自 LexiFlow Web Runtime 实际运行，使用演示数据覆盖完整学习流程。</p>
+          <p>5 个阶段都来自真实 Runtime；Visualize 与 Apply 额外展示“用户先做 → AI 辅助后”的结果状态。AI 结果使用固定演示响应复现真实交互，不把生成图冒充产品页面。</p>
         </div>
         <small>v0.8.7 runtime · 2026.09</small>
       </div>
@@ -78,7 +108,7 @@ function LexiFlowRuntimeGallery() {
               aria-selected={active}
               className={`runtime-stage-tab ${active ? 'is-active' : ''}`}
               key={stage.id}
-              onClick={() => setActiveStageId(stage.id)}
+              onClick={() => switchStage(stage)}
             >
               <span>{stage.number}</span>
               <strong>{stage.label}</strong>
@@ -88,17 +118,40 @@ function LexiFlowRuntimeGallery() {
         })}
       </div>
 
-      <figure className="runtime-stage-view" key={activeStage.id}>
+      {hasResult && (
+        <div className="runtime-state-toggle" aria-label={`${activeStage.label} 页面状态`}>
+          <span>看交互变化</span>
+          <div>
+            <button
+              type="button"
+              className={viewMode === 'input' ? 'is-active' : ''}
+              onClick={() => setViewMode('input')}
+            >
+              用户先做
+            </button>
+            <button
+              type="button"
+              className={viewMode === 'result' ? 'is-active' : ''}
+              onClick={() => setViewMode('result')}
+            >
+              AI 辅助后
+            </button>
+          </div>
+        </div>
+      )}
+
+      <figure className="runtime-stage-view" key={`${activeStage.id}-${viewMode}`}>
         <a href={imageUrl} target="_blank" rel="noreferrer" className="runtime-stage-view__image">
-          <img src={imageUrl} alt={activeStage.alt} loading="lazy" />
+          <img src={imageUrl} alt={activeAlt} loading="lazy" />
           <span className="runtime-stage-view__zoom"><Maximize2 aria-hidden="true" /> 查看完整实机截图</span>
+          {showingResult && <span className="runtime-stage-view__fixture">固定演示响应 · 真实 UI 状态</span>}
         </a>
         <figcaption>
           <div>
             <span>{activeStage.number} / 05</span>
-            <strong>{activeStage.label}</strong>
+            <strong>{activeStage.label}{showingResult ? ' · AI 辅助后' : ''}</strong>
           </div>
-          <p>{activeStage.note}</p>
+          <p>{activeNote}</p>
         </figcaption>
       </figure>
     </Reveal>
