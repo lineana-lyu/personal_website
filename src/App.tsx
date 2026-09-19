@@ -31,9 +31,9 @@ import {
 
 const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
-function SectionHeading({ number, eyebrow, title, lead }: { number: string; eyebrow: string; title: string; lead?: string }) {
+function SectionHeading({ number, eyebrow, title, lead, className = '' }: { number: string; eyebrow: string; title: string; lead?: string; className?: string }) {
   return (
-    <Reveal className="section-heading">
+    <Reveal className={`section-heading ${className}`.trim()}>
       <span className="section-number">{number}</span>
       <div className="section-heading__content">
         <span className="eyebrow">{eyebrow}</span>
@@ -253,9 +253,10 @@ function Projects() {
       <div className="page-shell page-shell--projects">
         <SectionHeading
           number="03"
-          eyebrow="SELECTED PROJECTS / CASE STUDIES"
-          title="先选一个你感兴趣的项目"
-          lead="不用从头读到尾。先看一句话和结果，再进入完整案例。"
+          eyebrow="SELECTED PROJECTS"
+          title="项目案例"
+          lead="围绕三个实际项目，展示我如何从问题定义走到产品决策、原型验证与交付。"
+          className="section-heading--projects"
         />
 
         <Reveal className="project-picker">
