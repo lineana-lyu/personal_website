@@ -4,6 +4,9 @@ import { Reveal } from './Reveal'
 import { ProjectVisual } from './ProjectVisuals'
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
+  const highlights = project.details.slice(0, 3)
+  const moreDetails = project.details.slice(3)
+
   return (
     <article className={`case-study accent-${project.accent}`} id={project.id}>
       <Reveal className="case-intro">
@@ -22,12 +25,12 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             <div className="case-links">
               {project.github && (
                 <a className="text-link" href={project.github} target="_blank" rel="noreferrer">
-                  查看 GitHub 项目 <ExternalLink aria-hidden="true" />
+                  GitHub <ExternalLink aria-hidden="true" />
                 </a>
               )}
               {project.release && (
                 <a className="text-link" href={project.release} target="_blank" rel="noreferrer">
-                  查看 v0.8.6 Release <ExternalLink aria-hidden="true" />
+                  v0.8.6 Release <ExternalLink aria-hidden="true" />
                 </a>
               )}
             </div>
@@ -42,16 +45,53 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           ))}
         </dl>
       </Reveal>
+
+      <Reveal className="case-visual-wrap" delay={60}>
+        <ProjectVisual project={project} />
+      </Reveal>
+
+      <Reveal className="case-details case-details--compact" delay={90}>
+        <div className="case-details-title">
+          <span>30-SECOND READ</span>
+          <h4>先看这 3 点</h4>
+          <p>问题、决策、结果先讲清楚；想深入再展开细节。</p>
+        </div>
+        <div className="case-highlight-grid">
+          {highlights.map((detail, index) => (
+            <article key={detail.label}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h5>{detail.label}</h5>
+              <p>{detail.value}</p>
+            </article>
+          ))}
+        </div>
+        {moreDetails.length > 0 && (
+          <details className="case-more">
+            <summary>
+              <span>继续看项目细节</span>
+              <small>+{moreDetails.length}</small>
+            </summary>
+            <dl>
+              {moreDetails.map((detail) => (
+                <div key={detail.label}>
+                  <dt>{detail.label}</dt>
+                  <dd>{detail.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </details>
+        )}
+      </Reveal>
+
       {project.evidence && project.evidence.length > 0 && (
-        <Reveal className="case-proof" delay={60}>
+        <Reveal className="case-proof" delay={110}>
           <div className="case-proof__brand">
             {project.id === 'lexiflow' && (
               <img src={`${import.meta.env.BASE_URL}media/lexiflow-icon.png`} alt="LexiFlow 应用图标" />
             )}
             <div>
               <span>REAL PRODUCT EVIDENCE</span>
-              <h4>不是概念稿，关键产品规则与公开交付都有仓库证据</h4>
-              <p>案例内容以项目主仓库、产品学习契约、运行时职责文档和公开 Release 为依据。</p>
+              <h4>可验证的真实交付</h4>
             </div>
           </div>
           <div className="case-proof__metrics">
@@ -76,23 +116,6 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           )}
         </Reveal>
       )}
-      <Reveal className="case-visual-wrap" delay={80}>
-        <ProjectVisual project={project} />
-      </Reveal>
-      <Reveal className="case-details" delay={100}>
-        <div className="case-details-title">
-          <span>DECISIONS &amp; LEARNINGS</span>
-          <h4>方案决策与项目边界</h4>
-        </div>
-        <dl>
-          {project.details.map((detail) => (
-            <div key={detail.label}>
-              <dt>{detail.label}</dt>
-              <dd>{detail.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </Reveal>
     </article>
   )
 }
