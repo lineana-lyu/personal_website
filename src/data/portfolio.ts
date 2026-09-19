@@ -13,6 +13,7 @@ export type Project = {
   details: { label: string; value: string }[]
   flow: string[]
   github?: string
+  release?: string
 }
 
 export const navItems = [
@@ -80,6 +81,7 @@ export const projects: Project[] = [
     ],
     flow: ['查词 / 选义', '进入每日任务', '记忆与联想', '自主造句', 'AI 辅助修正', '到期复习', '中断后重排'],
     github: 'https://github.com/lineana-lyu/lexiflow',
+    release: 'https://github.com/lineana-lyu/lexiflow/releases/tag/v0.8.6',
   },
   {
     id: 'robot-service',
