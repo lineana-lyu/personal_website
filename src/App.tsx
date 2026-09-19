@@ -245,17 +245,49 @@ function Experience() {
 }
 
 function Projects() {
+  const [activeProjectId, setActiveProjectId] = useState(projects[0].id)
+  const activeProject = projects.find((project) => project.id === activeProjectId) ?? projects[0]
+
   return (
     <section className="section projects" id="projects">
       <div className="page-shell page-shell--projects">
         <SectionHeading
           number="03"
           eyebrow="SELECTED PROJECTS / CASE STUDIES"
-          title="三个项目，三种从用户问题走到可交付结果的方式"
-          lead="项目内容已按最新简历重整，重点展示我实际承担的产品判断、流程设计、异常处理、研发协作与版本交付。"
+          title="先选一个你感兴趣的项目"
+          lead="不用从头读到尾。先看一句话和结果，再进入完整案例。"
         />
-        <div className="project-list">
-          {projects.map((project) => <ProjectCaseStudy project={project} key={project.id} />)}
+
+        <Reveal className="project-picker">
+          {projects.map((project) => {
+            const isActive = project.id === activeProjectId
+            return (
+              <button
+                className={`project-picker__item accent-${project.accent} ${isActive ? 'is-active' : ''}`}
+                type="button"
+                key={project.id}
+                onClick={() => setActiveProjectId(project.id)}
+                aria-pressed={isActive}
+              >
+                <span className="project-picker__number">{project.number}</span>
+                <div className="project-picker__copy">
+                  <div className="project-picker__topline">
+                    <strong>{project.title}</strong>
+                    <span>{project.status.split('·').at(-1)?.trim()}</span>
+                  </div>
+                  <p>{project.headline}</p>
+                  <div className="project-picker__tags">
+                    {project.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
+                </div>
+                <ArrowRight className="project-picker__arrow" aria-hidden="true" />
+              </button>
+            )
+          })}
+        </Reveal>
+
+        <div className="project-list project-list--single" key={activeProject.id}>
+          <ProjectCaseStudy project={activeProject} />
         </div>
       </div>
     </section>
