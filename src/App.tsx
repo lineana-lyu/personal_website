@@ -96,7 +96,7 @@ function Header() {
             </a>
           ))}
         </nav>
-        <a className="header-resume roll-link" href={publicAsset('documents/resume.pdf')} download aria-label="下载简历">
+        <a className="header-resume roll-link" href={publicAsset('documents/resume.html')} target="_blank" rel="noreferrer" aria-label="查看最新版简历">
           <span className="nav-roll" aria-hidden="true">
             <span className="nav-roll__base">Resume</span>
             <span className="nav-roll__accent">Resume</span>
@@ -355,8 +355,8 @@ function Contact() {
           <a className="contact-link" href={contact.github} target="_blank" rel="noreferrer">
             <span><GitFork aria-hidden="true" />GitHub</span><strong>@{contact.githubHandle}</strong><ExternalLink aria-hidden="true" />
           </a>
-          <a className="contact-link" href={publicAsset('documents/resume.pdf')} download>
-            <span><Download aria-hidden="true" />Resume</span><strong>下载 PDF 简历</strong><ArrowDownRight aria-hidden="true" />
+          <a className="contact-link" href={publicAsset('documents/resume.html')} target="_blank" rel="noreferrer">
+            <span><Download aria-hidden="true" />Resume</span><strong>查看最新版简历</strong><ArrowDownRight aria-hidden="true" />
           </a>
           <div className="contact-link contact-link--muted">
             <span>Phone / WeChat</span><strong>{contact.phoneMasked}</strong><small>完整联系方式可在沟通后提供</small>
