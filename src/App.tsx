@@ -146,7 +146,7 @@ function Hero() {
           <span className="hero-edition">PORTFOLIO / 2027</span>
           <div className="status-pill"><span />可实习 / 校招</div>
         </div>
-        <p className="hero-name"><strong>吕灵慧</strong><span>2027 届硕士 · AI 产品经理</span></p>
+        <p className="hero-name"><strong>吕灵慧</strong><span>2027 届硕士 · AI 产品经理 / 助理</span></p>
         <p className="hero-kicker">AI PRODUCT MANAGER · FROM PROBLEM TO PROTOTYPE</p>
         <h1 id="hero-title">
           <span className="hero-title-line"><span>把 AI 能力</span></span>
@@ -158,7 +158,7 @@ function Hero() {
         </div>
         <div className="hero-bottomline">
           <p className="hero-description">
-            从真实场景出发，拆解需求、定义方案、验证价值，让复杂的 AI 能力成为清晰、可信、可落地的产品体验。
+            从真实用户任务出发，在知识问答、固定流程与 AI 辅助之间做取舍，并把异常、兜底和验收条件一起设计进可运行的产品体验。
           </p>
           <div className="hero-actions">
             <a className="button button--primary" href="#projects">查看项目 <ArrowDownRight aria-hidden="true" /></a>
@@ -186,8 +186,8 @@ function About() {
         <SectionHeading
           number="01"
           eyebrow="ABOUT / POSITIONING"
-          title="懂产品，也能和技术说同一种语言"
-          lead="我的优势不是把产品和技术分别列出来，而是能在同一个问题里同时看见用户、流程、数据与模型边界。"
+          title="从用户任务到可运行原型，再到研发协作"
+          lead="当前作品集只保留简历中有实际经历支撑的内容：场景判断、流程设计、AI 能力取舍、原型交付与基础技术协作。"
         />
         <div className="about-grid">
           <Reveal className="about-statement">
@@ -215,7 +215,7 @@ function Experience() {
   return (
     <section className="section experience" id="experience">
       <div className="page-shell">
-        <SectionHeading number="02" eyebrow="EXPERIENCE / PRACTICE" title="在真实教育场景里，把需求变成可验证方案" />
+        <SectionHeading number="02" eyebrow="EXPERIENCE / PRACTICE" title="在真实教育场景里，把训练需求变成可运行 Demo" />
         <Reveal className="experience-layout">
           <aside className="experience-aside">
             <span className="experience-year">2026</span>
@@ -251,8 +251,8 @@ function Projects() {
         <SectionHeading
           number="03"
           eyebrow="SELECTED PROJECTS / CASE STUDIES"
-          title="三个项目，三种把想法落到系统里的方式"
-          lead="以下图形是基于真实项目内容整理的产品设计示意，不是伪造的线上截图；它们用来说明我如何思考、拆解和验证。"
+          title="三个项目，三种从用户问题走到可交付结果的方式"
+          lead="项目内容已按最新简历重整，重点展示我实际承担的产品判断、流程设计、异常处理、研发协作与版本交付。"
         />
         <div className="project-list">
           {projects.map((project) => <ProjectCaseStudy project={project} key={project.id} />)}
@@ -299,7 +299,7 @@ function Capabilities() {
           number="05"
           eyebrow="CAPABILITIES / TOOLKIT"
           title="以完成任务为单位描述能力"
-          lead="不使用失真的百分比；用项目实践、独立完成范围和技术基础说明当前能力边界。"
+          lead="不堆砌工具名，只保留在最新简历和项目中有实际任务支撑的能力，说明当前可独立完成的范围与协作边界。"
         />
         <div className="capability-list">
           {capabilities.map((capability, index) => (
@@ -346,7 +346,7 @@ function Contact() {
         <Reveal className="contact-copy">
           <span className="eyebrow">CONTACT / NEXT CHAPTER</span>
           <h2>期待一起，<br />把 AI 从能力变成产品。</h2>
-          <p>如果你正在寻找一位既理解用户需求，也愿意深入模型、数据和技术实现的 AI 产品经理，欢迎联系我。</p>
+          <p>如果你正在寻找 AI 产品经理 / 产品助理，希望候选人既能梳理用户任务，也能把 AI 能力、异常兜底和实现边界一起落到原型中，欢迎联系我。</p>
         </Reveal>
         <Reveal className="contact-links" delay={80}>
           <a className="contact-link contact-link--primary" href={`mailto:${contact.email}`}>
