@@ -50,6 +50,65 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         <ProjectVisual project={project} />
       </Reveal>
 
+      {project.id === 'lexiflow' && (
+        <Reveal className="case-real-ui" delay={80}>
+          <div className="case-real-ui__head">
+            <div>
+              <span>REAL PRODUCT UI</span>
+              <h4>实机运行页面</h4>
+              <p>由 LexiFlow v0.8.7 Web Runtime 实际运行后自动截取，不是生成式界面图。</p>
+            </div>
+            <small>2026.09 · Chromium runtime capture</small>
+          </div>
+
+          <div className="case-real-ui__grid">
+            <a
+              className="case-real-ui__shot case-real-ui__shot--hero"
+              href={`${import.meta.env.BASE_URL}media/lexiflow-real-lookup-grow.png`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}media/lexiflow-real-lookup-grow.png`}
+                alt="LexiFlow 实机运行的 grow 查词与制卡页面"
+                loading="lazy"
+              />
+              <span><b>01</b> 查词与制卡 · grow</span>
+            </a>
+
+            <div className="case-real-ui__stack">
+              <a
+                className="case-real-ui__shot"
+                href={`${import.meta.env.BASE_URL}media/lexiflow-real-today-grow.png`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}media/lexiflow-real-today-grow.png`}
+                  alt="LexiFlow 实机运行的今日学习页面"
+                  loading="lazy"
+                />
+                <span><b>02</b> Today · 新词进入学习计划</span>
+              </a>
+
+              <a
+                className="case-real-ui__shot"
+                href={`${import.meta.env.BASE_URL}media/lexiflow-real-library-grow.png`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}media/lexiflow-real-library-grow.png`}
+                  alt="LexiFlow 实机运行的单词库页面"
+                  loading="lazy"
+                />
+                <span><b>03</b> 单词库 · 状态与后续操作</span>
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      )}
+
       <Reveal className="case-details case-details--compact" delay={90}>
         <div className="case-details-title">
           <span>30-SECOND READ</span>
