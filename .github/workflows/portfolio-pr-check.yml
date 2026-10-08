@@ -1,0 +1,48 @@
+name: Portfolio pull request check
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/portfolio-pr-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: TypeScript validation
+        run: pnpm run typecheck
+
+      - name: Build for GitHub Pages
+        run: pnpm run build:pages
+
+      - name: Verify static entry and assets
+        run: |
+          test -s dist/index.html
+          test -s dist/media/lexiflow-real-visualize-grow.png
+          test -s dist/media/lexiflow-real-apply-checked.png
