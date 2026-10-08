@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import {
-  ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, CheckCircle2,
-  ChevronDown, ClipboardCheck, Code2, ExternalLink, FileCheck2, FileText,
-  GitBranch, Layers3, MonitorPlay, ShieldCheck, Sparkles,
+  ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2,
+  ClipboardCheck, Code2, ExternalLink, FileCheck2, FileText,
+  GitBranch, Layers3, ShieldCheck, Sparkles,
 } from 'lucide-react'
 import './LexiFlowDeepDive.css'
 
@@ -294,6 +294,17 @@ export function LexiFlowDeepDive() {
         <div className="lf-hero-index"><span>WINDOWS / LOCAL FIRST</span><span>2026 · v0.8.7</span><span>SCROLL TO EXPLORE ↓</span></div>
       </div>
     </div>
+
+    <nav className="lf-chapter-nav" aria-label="LexiFlow 案例章节">
+      <div>
+        <a href="#lf-overview">01 · 产品全貌</a>
+        <a href="#lf-decisions">02 · 产品决策</a>
+        <a href="#lf-runtime">03 · 真实界面</a>
+        <a href="#lf-validation">04 · 评测验收</a>
+        <a href="#lf-documents">05 · 产品文档</a>
+        <a href="#lf-reflection">06 · 项目复盘</a>
+      </div>
+    </nav>
 
     <div className="lf-main-content">
       <section className="lf-section" id="lf-overview">
