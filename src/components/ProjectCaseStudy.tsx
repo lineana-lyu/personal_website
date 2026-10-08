@@ -95,7 +95,7 @@ function LexiFlowRuntimeGallery() {
           <h4>核心学习闭环 · 实机运行</h4>
           <p>5 个阶段都来自真实 Runtime；Visualize 与 Apply 额外展示“用户先做 → AI 辅助后”的结果状态。AI 结果使用固定演示响应复现真实交互，不把生成图冒充产品页面。</p>
         </div>
-        <small>v0.8.7 runtime · 2026.09</small>
+        <small>LexiFlow Runtime · 实机截图</small>
       </div>
 
       <div className="runtime-stage-tabs" role="tablist" aria-label="LexiFlow 核心学习阶段">
@@ -225,7 +225,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               )}
               {project.release && (
                 <a className="text-link" href={project.release} target="_blank" rel="noreferrer">
-                  v0.8.6 Release <ExternalLink aria-hidden="true" />
+                  v0.8.7 Release <ExternalLink aria-hidden="true" />
                 </a>
               )}
             </div>
