@@ -95,7 +95,7 @@ function LexiFlowRuntimeGallery() {
           <h4>核心学习闭环 · 实机运行</h4>
           <p>5 个阶段都来自真实 Runtime；Visualize 与 Apply 额外展示“用户先做 → AI 辅助后”的结果状态。AI 结果使用固定演示响应复现真实交互，不把生成图冒充产品页面。</p>
         </div>
-        <small>v0.8.7 runtime · 2026.09</small>
+        <small>LexiFlow Runtime · 实机截图</small>
       </div>
 
       <div className="runtime-stage-tabs" role="tablist" aria-label="LexiFlow 核心学习阶段">
@@ -162,52 +162,8 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
   const highlights = project.details.slice(0, 3)
   const moreDetails = project.details.slice(3)
 
-  return (
-    <article className={`case-study accent-${project.accent}`} id={project.id}>
-      <Reveal className="case-intro">
-        <div className="case-heading">
-          <div className="case-meta">
-            <span>CASE STUDY</span>
-            <span className="case-status">{project.status}</span>
-          </div>
-          <h3>{project.title}</h3>
-          <p className="case-english">{project.englishTitle}</p>
-          <p className="case-headline">{project.headline}</p>
-          <div className="tag-row">
-            {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
-          </div>
-          {(project.github || project.release) && (
-            <div className="case-links">
-              {project.github && (
-                <a className="text-link" href={project.github} target="_blank" rel="noreferrer">
-                  GitHub <ExternalLink aria-hidden="true" />
-                </a>
-              )}
-              {project.release && (
-                <a className="text-link" href={project.release} target="_blank" rel="noreferrer">
-                  v0.8.6 Release <ExternalLink aria-hidden="true" />
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-        <dl className="case-facts">
-          {project.facts.map((fact) => (
-            <div key={fact.label}>
-              <dt>{fact.label}</dt>
-              <dd>{fact.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </Reveal>
-
-      <Reveal className="case-visual-wrap" delay={60}>
-        <ProjectVisual project={project} />
-      </Reveal>
-
-      {project.id === 'lexiflow' && <LexiFlowRuntimeGallery />}
-
-      <Reveal className="case-details case-details--compact" delay={90}>
+  const summaryPanel = (
+    <Reveal className="case-details case-details--compact" delay={90}>
         <div className="case-details-title">
           <span>30-SECOND READ</span>
           <h4>先看这 3 点</h4>
@@ -239,6 +195,61 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           </details>
         )}
       </Reveal>
+  )
+
+  return (
+    <article className={`case-study accent-${project.accent}`} id={project.id}>
+      <Reveal className="case-intro">
+        <div className="case-heading">
+          <div className="case-meta">
+            <span>CASE STUDY</span>
+            <span className="case-status">{project.status}</span>
+          </div>
+          <h3>{project.title}</h3>
+          <p className="case-english">{project.englishTitle}</p>
+          <p className="case-headline">{project.headline}</p>
+          <div className="tag-row">
+            {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+          </div>
+          {(project.github || project.release) && (
+            <div className="case-links">
+              {project.id === 'lexiflow' && (
+                <a className="text-link case-deep-link" href={import.meta.env.BASE_URL + '?case=lexiflow'}>
+                  查看完整产品案例 <ExternalLink aria-hidden="true" />
+                </a>
+              )}
+              {project.github && (
+                <a className="text-link" href={project.github} target="_blank" rel="noreferrer">
+                  GitHub <ExternalLink aria-hidden="true" />
+                </a>
+              )}
+              {project.release && (
+                <a className="text-link" href={project.release} target="_blank" rel="noreferrer">
+                  v0.8.7 Release <ExternalLink aria-hidden="true" />
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+        <dl className="case-facts">
+          {project.facts.map((fact) => (
+            <div key={fact.label}>
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </Reveal>
+
+      {project.id === 'lexiflow' && summaryPanel}
+
+      <Reveal className="case-visual-wrap" delay={60}>
+        <ProjectVisual project={project} />
+      </Reveal>
+
+      {project.id === 'lexiflow' && <LexiFlowRuntimeGallery />}
+
+      {project.id !== 'lexiflow' && summaryPanel}
 
       {project.evidence && project.evidence.length > 0 && (
         <Reveal className="case-proof" delay={110}>
