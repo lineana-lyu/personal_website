@@ -103,8 +103,8 @@ function LexiFlowVisual() {
       </div>
 
       <footer className="mechanism-evidence">
-        <span><CheckCircle2 aria-hidden="true" /> Windows v0.8.6</span>
-        <span><ShieldCheck aria-hidden="true" /> 33 个 check 脚本</span>
+        <span><CheckCircle2 aria-hidden="true" /> Windows v0.8.7</span>
+        <span><ShieldCheck aria-hidden="true" /> 自动化回归检查</span>
         <span><Sparkles aria-hidden="true" /> AI 可降级</span>
       </footer>
     </VisualShell>
