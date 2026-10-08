@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   ArrowDown,
+  ArrowLeft,
   ArrowDownRight,
   ArrowRight,
   Check,
@@ -13,6 +14,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import { ProjectCaseStudy } from './components/ProjectCaseStudy'
+import { LexiFlowDeepDive } from './components/LexiFlowDeepDive'
 import { MotionDirector } from './components/MotionDirector'
 import { Reveal } from './components/Reveal'
 import { TargetCursor } from './components/TargetCursor'
@@ -426,7 +428,46 @@ function Contact() {
   )
 }
 
+
+function CaseHeader() {
+  const back = import.meta.env.BASE_URL + '#projects'
+  return (
+    <header className="site-header lf-site-header">
+      <a className="brand" href={back} aria-label="返回个人作品集">
+        <span>LLH</span>
+        <span>AI PRODUCT</span>
+      </a>
+      <nav className="desktop-nav" aria-label="案例页面导航">
+        <a className="roll-link" href="#lf-overview">项目全貌</a>
+        <a className="roll-link" href="#lf-decisions">产品决策</a>
+        <a className="roll-link" href="#lf-documents">产品文档</a>
+      </nav>
+      <a className="header-resume" href={back} aria-label="返回原作品集的项目列表">
+        <ArrowLeft aria-hidden="true" /> 返回作品集
+      </a>
+    </header>
+  )
+}
+
 export default function App() {
+  if (new URLSearchParams(window.location.search).get('case') === 'lexiflow') {
+    return (
+      <>
+        <TargetCursor
+          spinDuration={4.8}
+          hoverDuration={0.22}
+          cursorColor="#252522"
+          cursorColorOnDark="#f5f4f0"
+          cursorColorOnTarget="#d56d63"
+          parallaxOn
+          hideDefaultCursor
+        />
+        <a className="skip-link" href="#lf-overview">跳到案例正文</a>
+        <CaseHeader />
+        <LexiFlowDeepDive />
+      </>
+    )
+  }
   return (
     <>
       <TargetCursor
