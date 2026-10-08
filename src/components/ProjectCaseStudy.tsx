@@ -162,6 +162,41 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
   const highlights = project.details.slice(0, 3)
   const moreDetails = project.details.slice(3)
 
+  const summaryPanel = (
+    <Reveal className="case-details case-details--compact" delay={90}>
+        <div className="case-details-title">
+          <span>30-SECOND READ</span>
+          <h4>先看这 3 点</h4>
+          <p>问题、决策、结果先讲清楚；想深入再展开细节。</p>
+        </div>
+        <div className="case-highlight-grid">
+          {highlights.map((detail, index) => (
+            <article key={detail.label}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h5>{detail.label}</h5>
+              <p>{detail.value}</p>
+            </article>
+          ))}
+        </div>
+        {moreDetails.length > 0 && (
+          <details className="case-more">
+            <summary>
+              <span>继续看项目细节</span>
+              <small>+{moreDetails.length}</small>
+            </summary>
+            <dl>
+              {moreDetails.map((detail) => (
+                <div key={detail.label}>
+                  <dt>{detail.label}</dt>
+                  <dd>{detail.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </details>
+        )}
+      </Reveal>
+  )
+
   return (
     <article className={`case-study accent-${project.accent}`} id={project.id}>
       <Reveal className="case-intro">
@@ -206,44 +241,15 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         </dl>
       </Reveal>
 
-      <Reveal className="case-details case-details--compact" delay={90}>
-        <div className="case-details-title">
-          <span>30-SECOND READ</span>
-          <h4>先看这 3 点</h4>
-          <p>问题、决策、结果先讲清楚；想深入再展开细节。</p>
-        </div>
-        <div className="case-highlight-grid">
-          {highlights.map((detail, index) => (
-            <article key={detail.label}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <h5>{detail.label}</h5>
-              <p>{detail.value}</p>
-            </article>
-          ))}
-        </div>
-        {moreDetails.length > 0 && (
-          <details className="case-more">
-            <summary>
-              <span>继续看项目细节</span>
-              <small>+{moreDetails.length}</small>
-            </summary>
-            <dl>
-              {moreDetails.map((detail) => (
-                <div key={detail.label}>
-                  <dt>{detail.label}</dt>
-                  <dd>{detail.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </details>
-        )}
-      </Reveal>
+      {project.id === 'lexiflow' && summaryPanel}
 
       <Reveal className="case-visual-wrap" delay={60}>
         <ProjectVisual project={project} />
       </Reveal>
 
       {project.id === 'lexiflow' && <LexiFlowRuntimeGallery />}
+
+      {project.id !== 'lexiflow' && summaryPanel}
 
       {project.evidence && project.evidence.length > 0 && (
         <Reveal className="case-proof" delay={110}>
