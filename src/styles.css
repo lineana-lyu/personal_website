@@ -1951,3 +1951,20 @@ a.contact-link:hover > svg { transform: translate(9px, -2px); }
     flex: 1;
   }
 }
+
+
+/* LexiFlow deeper case entry: distinct, but consistent with the portfolio links. */
+.case-links .case-deep-link {
+  padding: 10px 13px;
+  border: 1px solid rgba(47, 159, 182, .28);
+  background: rgba(47, 159, 182, .09);
+  color: #2b616b;
+}
+.case-links .case-deep-link:hover { background: rgba(47, 159, 182, .16); }
+.lf-site-header .header-resume { justify-self: end; }
+.lf-site-header .header-resume svg { width: 16px; }
+@media (max-width: 768px) {
+  .lf-site-header { grid-template-columns: 1fr auto; }
+  .lf-site-header .desktop-nav { display: none; }
+  .lf-site-header .header-resume { font-size: 11px; }
+}
