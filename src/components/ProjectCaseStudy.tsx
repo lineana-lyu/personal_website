@@ -178,6 +178,11 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           </div>
           {(project.github || project.release) && (
             <div className="case-links">
+              {project.id === 'lexiflow' && (
+                <a className="text-link case-deep-link" href={import.meta.env.BASE_URL + '?case=lexiflow'}>
+                  查看完整产品案例 <ExternalLink aria-hidden="true" />
+                </a>
+              )}
               {project.github && (
                 <a className="text-link" href={project.github} target="_blank" rel="noreferrer">
                   GitHub <ExternalLink aria-hidden="true" />
@@ -200,12 +205,6 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           ))}
         </dl>
       </Reveal>
-
-      <Reveal className="case-visual-wrap" delay={60}>
-        <ProjectVisual project={project} />
-      </Reveal>
-
-      {project.id === 'lexiflow' && <LexiFlowRuntimeGallery />}
 
       <Reveal className="case-details case-details--compact" delay={90}>
         <div className="case-details-title">
@@ -239,6 +238,12 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           </details>
         )}
       </Reveal>
+
+      <Reveal className="case-visual-wrap" delay={60}>
+        <ProjectVisual project={project} />
+      </Reveal>
+
+      {project.id === 'lexiflow' && <LexiFlowRuntimeGallery />}
 
       {project.evidence && project.evidence.length > 0 && (
         <Reveal className="case-proof" delay={110}>
