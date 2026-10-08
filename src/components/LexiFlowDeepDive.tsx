@@ -96,8 +96,8 @@ const documents: Record<DocumentId, {
       { title: '关键约束', body: 'Today 是有限且同日冻结的计划；Select 不重复确认义项；常规跨阶段学习需要跨 StudyDay；AI 不能决定调度、阶段推进或学习者是否真的输入了句子。' },
       { title: '明确的非目标', body: '不把 AI 自由对话代替主动练习；不以词条数量代表掌握；不宣称未经验证的学习效果、留存和模型准确率。' },
     ],
-    link: repo + '/blob/main/docs/PRODUCT_LEARNING_CONTRACT_V3.md',
-    linkLabel: '查看完整学习契约',
+    link: 'https://github.com/lineana-lyu/personal_website/blob/main/docs/lexiflow/PRD_v0.8.7.md',
+    linkLabel: '阅读完整 PRD',
   },
   functional: {
     tag: '02 / BUSINESS RULES', title: '功能规格与业务规则', kind: '研发 / 测试共用',
@@ -129,8 +129,8 @@ const documents: Record<DocumentId, {
       { title: '一致性与安全性', body: '相同输入的反馈需要稳定；可执行修改必须经过额外检查，不能误删已正确的词汇与结构；同句复检也不能改变用户原有意图。' },
       { title: '成本与兜底', body: '本地词典优先；联想只有用户主动请求才触发 AI；AI 失败保留用户草稿，展示具体错误并提供重试或合理跳过。' },
     ],
-    link: repo + '/blob/main/scripts/check-apply-quality-v3.js',
-    linkLabel: '查看 Apply 回归约束',
+    link: 'https://github.com/lineana-lyu/personal_website/blob/main/docs/lexiflow/AI_EVALUATION.md',
+    linkLabel: '阅读 AI 评测文档',
   },
   verification: {
     tag: '05 / VALIDATION', title: '测试验收与交付证据', kind: '可追溯检查',
@@ -140,8 +140,8 @@ const documents: Record<DocumentId, {
       { title: '重点用例', body: '重复确认不可回归；已选词不能当天串联完成五阶段；Apply 复制参考例句不可通关；AI 调用失败不得覆盖输入；学习数据持久化失败不得提前推进状态。' },
       { title: '尚待验证', body: '用户访谈、连续学习留存、学习效果提升、AI 诊断准确率、完整词源覆盖率都不应仅凭代码测试当作已有成果。' },
     ],
-    link: repo + '/actions/workflows/learning-check.yml',
-    linkLabel: '查看 CI 验收记录',
+    link: 'https://github.com/lineana-lyu/personal_website/blob/main/docs/lexiflow/QA_ACCEPTANCE.md',
+    linkLabel: '阅读测试验收矩阵',
   },
 }
 
