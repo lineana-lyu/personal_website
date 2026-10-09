@@ -44,6 +44,9 @@ jobs:
       - name: Verify all four projects are present in published UI
         run: node scripts/verify-portfolio-projects.mjs
 
+      - name: Validate seven VersionFlow runtime screenshot assets
+        run: node scripts/verify-versionflow-evidence.mjs
+
       - name: Configure Pages
         uses: actions/configure-pages@v6
 
