@@ -255,8 +255,9 @@ function Projects() {
         if (!target) return
 
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        const offset = window.innerWidth <= 768 ? 132 : 148
-        const top = target.getBoundingClientRect().top + window.scrollY - offset
+        const headerHeight = document.querySelector<HTMLElement>('.site-header')?.getBoundingClientRect().height ?? 72
+        const switcherHeight = document.querySelector<HTMLElement>('.project-switcher')?.getBoundingClientRect().height ?? 64
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - switcherHeight - 24
         window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' })
       })
     })
@@ -285,9 +286,11 @@ function Projects() {
                   key={project.id}
                   onClick={() => switchProject(project.id)}
                   aria-pressed={isActive}
+                  title={project.title}
+                  aria-label={`${project.number} · ${project.title}`}
                 >
                   <span>{project.number}</span>
-                  <strong>{project.title}</strong>
+                  <strong>{project.navTitle ?? project.title}</strong>
                 </button>
               )
             })}

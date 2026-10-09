@@ -1554,19 +1554,16 @@ a.contact-link:hover > svg { transform: translate(9px, -2px); }
   .project-switcher__counter {
     display: none;
   }
+  /* All four projects stay visible, including the last one. No hidden swipe-only items. */
   .project-switcher__tabs {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 4px;
-    overflow-x: auto;
-    padding-bottom: 2px;
-    scrollbar-width: none;
-  }
-  .project-switcher__tabs::-webkit-scrollbar {
-    display: none;
+    overflow: visible;
   }
   .project-switcher__tab {
-    flex: 0 0 auto;
-    width: min(72vw, 260px);
+    width: 100%;
+    min-height: 48px;
   }
 }
 @media (max-width: 560px) {
@@ -1576,14 +1573,14 @@ a.contact-link:hover > svg { transform: translate(9px, -2px); }
   }
   .project-switcher__tab {
     min-height: 44px;
-    width: min(76vw, 240px);
-    padding: 7px 10px;
+    width: 100%;
+    padding: 7px 9px;
+    gap: 6px;
   }
   .project-switcher__tab strong {
     font-size: 10px;
   }
 }
-
 
 /* Real LexiFlow runtime screens: evidence first, not a decorative image gallery. */
 .case-real-ui {

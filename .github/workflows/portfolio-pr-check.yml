@@ -41,6 +41,9 @@ jobs:
       - name: Build for GitHub Pages
         run: pnpm run build:pages
 
+      - name: Verify all four projects are present in published UI
+        run: node scripts/verify-portfolio-projects.mjs
+
       - name: Verify static entry and assets
         run: |
           test -s dist/index.html

@@ -4,6 +4,7 @@ export type Project = {
   id: string
   number: string
   title: string
+  navTitle?: string
   englishTitle: string
   status: string
   accent: Accent
@@ -60,6 +61,7 @@ export const projects: Project[] = [
     id: 'lexiflow',
     number: '01',
     title: 'LexiFlow 英语学习应用',
+    navTitle: 'LexiFlow',
     englishTitle: 'Local-first English Learning Desktop App',
     status: '2026.08—2026.09 · 已发布 Windows v0.8.7',
     accent: 'cyan',
@@ -97,6 +99,7 @@ export const projects: Project[] = [
     id: 'versionflow',
     number: '02',
     title: 'VersionFlow · PCB 器件位移追溯',
+    navTitle: 'VersionFlow',
     englishTitle: 'JLCEDA / EasyEDA Pro · Experimental Extension MVP',
     status: '2026.09—至今 · v0.0.5 实验性 MVP',
     accent: 'sage',
@@ -131,6 +134,7 @@ export const projects: Project[] = [
     id: 'robot-service',
     number: '03',
     title: '扫地机用户服务助手',
+    navTitle: '扫地机助手',
     englishTitle: 'Robot Vacuum User Service Assistant',
     status: '2026.04—2026.05 · 已完成可运行 Demo',
     accent: 'coral',
@@ -156,6 +160,7 @@ export const projects: Project[] = [
     id: 'news-demo',
     number: '04',
     title: '仿今日头条资讯产品功能 Demo',
+    navTitle: '资讯 Demo',
     englishTitle: 'News Product Function Demo',
     status: '2026.04—2026.07 · 已完成并公开源码',
     accent: 'orange',
