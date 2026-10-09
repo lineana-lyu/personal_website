@@ -33,7 +33,17 @@
 | 重启 EDA | 仍显示同一 ID 和两段位移 | \`trace-after-restart-v0.0.5.png\` |
 | 重复 Baseline | 正确拒绝，链长度保持 3 | \`duplicate-baseline-fail-v0.0.5.png\` 与 \`history-after-failed-baseline-v0.0.5.png\` |
 
-**公开资产说明**：上述实机 PNG 截图包含在用户上传归档里，当前作品集网页呈现的是依据真实坐标绘制的交互示意，**不是原生插件截图**；此处只提供文件名与验收内容索引，没有虚构一个公开 GitHub 截图地址。
+**公开展示说明**：网站展示以下 **7 张初步筛选的真实运行截图**，均从原始 PNG **裁剪到验收弹窗证据区域**，弹窗文本与结果未改动。静态站为便于发布，将裁剪后的 PNG 像素嵌入 SVG 图片容器，仍属实机截图，不是界面重绘：
+
+1. [Initial Baseline 提交](../../public/media/versionflow/baseline-v0.0.5-pass-evidence.svg)
+2. [Checkpoint 1 提交](../../public/media/versionflow/cp-a-commit-v0.0.5-evidence.svg)
+3. [Checkpoint 2 提交](../../public/media/versionflow/cp-b-commit-v0.0.5-evidence.svg)
+4. [R1 Movement Trace](../../public/media/versionflow/trace-v0.0.5-evidence.svg)
+5. [重启后 Movement Trace](../../public/media/versionflow/trace-after-restart-v0.0.5-evidence.svg)
+6. [重复 Baseline 被拒绝](../../public/media/versionflow/duplicate-baseline-fail-v0.0.5-evidence.svg)
+7. [拒绝后历史仍为 3 条](../../public/media/versionflow/history-after-failed-baseline-v0.0.5-evidence.svg)
+
+不公开包含账号、工程及文档标识的 `e0-v0.0.4-pass.png`、`cp-a-position-v0.0.5.png`、`cp-b-position-v0.0.5.png`。原版 10 张截图仍保存在用户上传文件中，不应误认为全部已公开或已经过最终人工隐私审核。网站的交互式 XY 轨迹另属于**依据原始坐标重绘的辅助示意图**，不属于插件 v0.0.5 的原生 UI 功能。
 
 ## 离线测试与不完整范围
 
