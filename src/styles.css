@@ -198,7 +198,7 @@ img, video { display: block; max-width: 100%; }
 .project-switcher__tabs {
   min-width: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 4px;
 }
 .project-switcher__tab {
