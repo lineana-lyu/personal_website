@@ -3,6 +3,7 @@ import { ExternalLink, FileCheck2, Maximize2 } from 'lucide-react'
 import type { Project } from '../data/portfolio'
 import { Reveal } from './Reveal'
 import { ProjectVisual } from './ProjectVisuals'
+import { VersionFlowEvidence } from './VersionFlowEvidence'
 
 type LexiFlowRuntimeStage = {
   id: 'select' | 'memorize' | 'visualize' | 'apply' | 'review'
@@ -211,11 +212,16 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           <div className="tag-row">
             {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
           </div>
-          {(project.github || project.release) && (
+          {(project.github || project.release || project.id === 'versionflow') && (
             <div className="case-links">
               {project.id === 'lexiflow' && (
                 <a className="text-link case-deep-link" href={import.meta.env.BASE_URL + '?case=lexiflow'}>
                   查看完整产品案例 <ExternalLink aria-hidden="true" />
+                </a>
+              )}
+              {project.id === 'versionflow' && (
+                <a className="text-link case-deep-link" href="#versionflow-evidence">
+                  查看实机验证与位移轨迹 <ExternalLink aria-hidden="true" />
                 </a>
               )}
               {project.github && (
@@ -241,7 +247,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         </dl>
       </Reveal>
 
-      {project.id === 'lexiflow' && summaryPanel}
+      {(project.id === 'lexiflow' || project.id === 'versionflow') && summaryPanel}
 
       <Reveal className="case-visual-wrap" delay={60}>
         <ProjectVisual project={project} />
@@ -249,7 +255,9 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
 
       {project.id === 'lexiflow' && <LexiFlowRuntimeGallery />}
 
-      {project.id !== 'lexiflow' && summaryPanel}
+      {project.id === 'versionflow' && <div id="versionflow-evidence"><VersionFlowEvidence /></div>}
+
+      {project.id !== 'lexiflow' && project.id !== 'versionflow' && summaryPanel}
 
       {project.evidence && project.evidence.length > 0 && (
         <Reveal className="case-proof" delay={110}>

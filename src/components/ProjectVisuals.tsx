@@ -111,6 +111,42 @@ function LexiFlowVisual() {
   )
 }
 
+function VersionFlowVisual() {
+  const steps = [
+    { icon: Database, label: '真实 PCB', note: '读取当前文档' },
+    { icon: BookOpen, label: 'Baseline', note: '手动建立起点' },
+    { icon: History, label: 'Checkpoint ×2', note: '记录移动后的坐标' },
+    { icon: Search, label: '查询 R1', note: '同一内部 ID' },
+    { icon: CheckCircle2, label: '位移轨迹', note: 'EDA 重启后可恢复' },
+  ]
+
+  return (
+    <VisualShell
+      kicker="MVP MECHANISM / REAL EDA"
+      title="不是重造版本控制，而是先证明一个器件的移动可以追溯"
+      note="产品机制示意 · 非插件实机截图"
+    >
+      <section className="mechanism-panel">
+        <div className="mechanism-panel__label">
+          <span>当前 v0.0.5 的真实验证链路</span>
+          <small>单窗口 · 手动提交</small>
+        </div>
+        <StepRail items={steps} />
+      </section>
+      <div className="mechanism-decisions">
+        <article><span>01</span><strong>先做位移追溯</strong><p>把首期能力收敛为 Baseline、Checkpoint 和坐标变化查询。</p></article>
+        <article><span>02</span><strong>真实 EDA 验收</strong><p>同一 R1 在 3 个历史节点留下 2 段可查询的位移记录。</p></article>
+        <article><span>03</span><strong>边界明确</strong><p>采购/生产影响、完整语义 Diff 与跨窗口协同不属于当前 MVP。</p></article>
+      </div>
+      <footer className="mechanism-evidence">
+        <span><CheckCircle2 aria-hidden="true" /> A1–A8 实机验收</span>
+        <span><ShieldCheck aria-hidden="true" /> 0.0.5 实验性插件</span>
+        <span><History aria-hidden="true" /> 重启历史恢复</span>
+      </footer>
+    </VisualShell>
+  )
+}
+
 function RobotServiceVisual() {
   return (
     <VisualShell
@@ -222,6 +258,7 @@ function NewsDemoVisual() {
 
 export function ProjectVisual({ project }: { project: Project }) {
   if (project.id === 'lexiflow') return <LexiFlowVisual />
+  if (project.id === 'versionflow') return <VersionFlowVisual />
   if (project.id === 'robot-service') return <RobotServiceVisual />
   return <NewsDemoVisual />
 }

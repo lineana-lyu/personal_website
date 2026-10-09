@@ -247,7 +247,10 @@ function Experience() {
 }
 
 function Projects() {
-  const [activeProjectId, setActiveProjectId] = useState(projects[0].id)
+  const [activeProjectId, setActiveProjectId] = useState(() => {
+    const requested = new URLSearchParams(window.location.search).get('project')
+    return projects.find((project) => project.id === requested)?.id ?? projects[0].id
+  })
   const activeProject = projects.find((project) => project.id === activeProjectId) ?? projects[0]
   const activeProjectIndex = projects.findIndex((project) => project.id === activeProject.id)
 
@@ -274,7 +277,7 @@ function Projects() {
           number="03"
           eyebrow="SELECTED PROJECTS"
           title="项目案例"
-          lead="围绕三个实际项目，展示我如何从问题定义走到产品决策、原型验证与交付。"
+          lead="从已发布 Windows 应用，到真实 EDA 环境中的实验性 MVP，再到教育场景的 AI 原型；每个项目都区分已交付成果与待验证假设。"
           className="section-heading--projects"
         />
 
@@ -368,7 +371,7 @@ function Capabilities() {
             ))}
             <article className="credentials cursor-target">
               <time>LANGUAGE &amp; AWARDS</time><h4>证书与奖励</h4>
-              <div><span>CET-4</span><span>CET-6</span><span>多次校级奖学金</span></div>
+              <div><span>CET-4</span><span>CET-6</span><span>国家奖学金</span><span>多次校级奖学金</span></div>
             </article>
           </div>
         </Reveal>
