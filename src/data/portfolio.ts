@@ -27,7 +27,7 @@ export const navItems = [
 ]
 
 export const profileMetrics = [
-  { value: '3', label: '个核心产品项目', accent: 'cyan' },
+  { value: '4', label: '个真实产品项目', accent: 'cyan' },
   { value: '1', label: '个 Windows 桌面应用', accent: 'coral' },
   { value: '1', label: '段 AI 产品实习', accent: 'orange' },
   { value: '8', label: '项 VersionFlow 实机验收', accent: 'sage' },
@@ -152,6 +152,30 @@ export const projects: Project[] = [
     github: 'https://github.com/lineana-lyu/Intelligent-Customer-Service',
   },
 
+  {
+    id: 'news-demo',
+    number: '04',
+    title: '仿今日头条资讯产品功能 Demo',
+    englishTitle: 'News Product Function Demo',
+    status: '2026.04—2026.07 · 已完成并公开源码',
+    accent: 'orange',
+    tags: ['内容产品', '业务规则', '接口与数据状态'],
+    headline: '把一个“收藏新闻”的用户动作，拆成接口、状态和数据规则。',
+    facts: [
+      { label: '用户主流程', value: '登录 → 浏览 → 详情 → 收藏 → 历史' },
+      { label: '学习目标', value: '把产品流程与业务规则转成后端能力' },
+      { label: '技术实现', value: 'FastAPI + SQLAlchemy + MySQL + Redis' },
+      { label: '交付状态', value: '后端 Demo · 源码 · 运行说明' },
+    ],
+    details: [
+      { label: '学习目标', value: '用资讯场景练习把用户动作翻译成后端能力，而不是只实现接口。' },
+      { label: '关键规则', value: '收藏要防重复；再次浏览要更新最近时间；页面状态需要和服务端数据保持一致。' },
+      { label: '体验支撑', value: '高频列表增加缓存，并统一成功、参数错误和服务异常的返回格式。' },
+      { label: '交付结果', value: '完成并公开后端 Demo，可直接说明 User、News、Favorite、History 之间的数据关系。' },
+    ],
+    flow: ['注册 / 登录', '新闻列表', '新闻详情', '收藏状态检查', '收藏 / 取消收藏', '浏览历史更新', '历史回看'],
+    github: 'https://github.com/lineana-lyu/toutiao_backend',
+  },
 ]
 
 export const methodSteps = [
