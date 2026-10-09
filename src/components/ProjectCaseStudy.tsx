@@ -4,6 +4,7 @@ import type { Project } from '../data/portfolio'
 import { Reveal } from './Reveal'
 import { ProjectVisual } from './ProjectVisuals'
 import { VersionFlowEvidence } from './VersionFlowEvidence'
+import { VersionFlowRuntimeGallery } from './VersionFlowRuntimeGallery'
 
 type LexiFlowRuntimeStage = {
   id: 'select' | 'memorize' | 'visualize' | 'apply' | 'review'
@@ -221,7 +222,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               )}
               {project.id === 'versionflow' && (
                 <a className="text-link case-deep-link" href="#versionflow-evidence">
-                  查看实机验证与位移轨迹 <ExternalLink aria-hidden="true" />
+                  查看 7 张实机截图与验证 <ExternalLink aria-hidden="true" />
                 </a>
               )}
               {project.github && (
@@ -255,7 +256,12 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
 
       {project.id === 'lexiflow' && <LexiFlowRuntimeGallery />}
 
-      {project.id === 'versionflow' && <div id="versionflow-evidence"><VersionFlowEvidence /></div>}
+      {project.id === 'versionflow' && (
+        <div id="versionflow-evidence">
+          <VersionFlowRuntimeGallery />
+          <VersionFlowEvidence />
+        </div>
+      )}
 
       {project.id !== 'lexiflow' && project.id !== 'versionflow' && summaryPanel}
 
