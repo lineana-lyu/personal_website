@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - 'src/**'
+      - 'public/media/versionflow/**'
+      - 'scripts/**'
+      - 'docs/versionflow/**'
       - 'index.html'
       - 'package.json'
       - 'pnpm-lock.yaml'
@@ -43,6 +46,9 @@ jobs:
 
       - name: Verify all four projects are present in published UI
         run: node scripts/verify-portfolio-projects.mjs
+
+      - name: Validate seven VersionFlow runtime screenshot assets
+        run: node scripts/verify-versionflow-evidence.mjs
 
       - name: Verify static entry and assets
         run: |
