@@ -6,7 +6,6 @@ import {
   ArrowRight,
   Check,
   Copy,
-  Download,
   ExternalLink,
   GitFork,
   Mail,
@@ -98,13 +97,6 @@ function Header() {
             </a>
           ))}
         </nav>
-        <a className="header-resume roll-link" href={publicAsset('documents/resume.html')} target="_blank" rel="noreferrer" aria-label="查看最新版简历">
-          <span className="nav-roll" aria-hidden="true">
-            <span className="nav-roll__base">Resume</span>
-            <span className="nav-roll__accent">Resume</span>
-          </span>
-          <Download aria-hidden="true" />
-        </a>
         <StaggeredMenu
           open={menuOpen}
           items={navItems}
@@ -277,7 +269,7 @@ function Projects() {
           number="03"
           eyebrow="SELECTED PROJECTS"
           title="项目案例"
-          lead="从已发布 Windows 应用，到真实 EDA 环境中的实验性 MVP，再到教育场景的 AI 原型；每个项目都区分已交付成果与待验证假设。"
+          lead="保留四个真实实践项目：Windows 学习应用、EDA 实验性插件、RAG 用户服务助手与资讯后端 Demo；分别展示问题定义、产品决策、验证和交付。"
           className="section-heading--projects"
         />
 
@@ -405,9 +397,6 @@ function Contact() {
           </a>
           <a className="contact-link" href={contact.github} target="_blank" rel="noreferrer">
             <span><GitFork aria-hidden="true" />GitHub</span><strong>@{contact.githubHandle}</strong><ExternalLink aria-hidden="true" />
-          </a>
-          <a className="contact-link" href={publicAsset('documents/resume.html')} target="_blank" rel="noreferrer">
-            <span><Download aria-hidden="true" />Resume</span><strong>查看最新版简历</strong><ArrowDownRight aria-hidden="true" />
           </a>
           <div className="contact-link contact-link--muted">
             <span>Phone / WeChat</span><strong>{contact.phoneMasked}</strong><small>完整联系方式可在沟通后提供</small>
