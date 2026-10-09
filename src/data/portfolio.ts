@@ -160,7 +160,7 @@ export const projects: Project[] = [
     id: 'news-demo',
     number: '04',
     title: '仿今日头条资讯产品功能 Demo',
-    navTitle: '资讯产品 Demo',
+    navTitle: '资讯 Demo',
     englishTitle: 'News Product Function Demo',
     status: '2026.04—2026.07 · 已完成并公开源码',
     accent: 'orange',
