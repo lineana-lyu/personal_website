@@ -46,3 +46,12 @@ jobs:
           test -s dist/index.html
           test -s dist/media/lexiflow-real-visualize-grow.png
           test -s dist/media/lexiflow-real-apply-checked.png
+
+      - name: Guard all portfolio projects and no downloadable resume route
+        run: |
+          grep -q "id: 'news-demo'" src/data/portfolio.ts
+          test ! -e dist/documents/resume.html
+          if grep -R -E 'documents/resume\.html' dist --include='*.js' --include='*.html'; then
+            echo "Unexpected public resume link in built site" >&2
+            exit 1
+          fi
