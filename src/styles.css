@@ -1968,3 +1968,6 @@ a.contact-link:hover > svg { transform: translate(9px, -2px); }
   .lf-site-header .desktop-nav { display: none; }
   .lf-site-header .header-resume { font-size: 11px; }
 }
+
+/* Anchor offset for the VersionFlow embedded, evidence-led case. */
+#versionflow-evidence { scroll-margin-top: 160px; }
