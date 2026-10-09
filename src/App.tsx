@@ -247,7 +247,10 @@ function Experience() {
 }
 
 function Projects() {
-  const [activeProjectId, setActiveProjectId] = useState(projects[0].id)
+  const [activeProjectId, setActiveProjectId] = useState(() => {
+    const requested = new URLSearchParams(window.location.search).get('project')
+    return projects.find((project) => project.id === requested)?.id ?? projects[0].id
+  })
   const activeProject = projects.find((project) => project.id === activeProjectId) ?? projects[0]
   const activeProjectIndex = projects.findIndex((project) => project.id === activeProject.id)
 
