@@ -285,9 +285,11 @@ function Projects() {
                   key={project.id}
                   onClick={() => switchProject(project.id)}
                   aria-pressed={isActive}
+                  title={project.title}
+                  aria-label={`${project.number} · ${project.title}`}
                 >
                   <span>{project.number}</span>
-                  <strong>{project.title}</strong>
+                  <strong>{project.navTitle ?? project.title}</strong>
                 </button>
               )
             })}
